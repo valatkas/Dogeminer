@@ -10,7 +10,7 @@ var preLoad = {
   upgradeprices: [2000, 5000, 10000, 20000, 50000],
   multipliers: [1, 1, 1, 1, 1],
   pricechange: [4, 50, 200, 5000],
-  dogecoin: 33333333,
+  dogecoin: 0,
   dogepersecond: 0,
   totalspent: 0,
   newsarr: [
@@ -112,8 +112,9 @@ function handleBuy() {
     worker.style.height = "auto";
     worker.style.padding = "0";
     worker.classList.add(workerName[workerName.indexOf(this.id)]);
-
     preLoad.workers.appendChild(worker);
+    handleDisplay();
+  } else {
   }
 
   // HANDLES UPGRADE PURCHASES
