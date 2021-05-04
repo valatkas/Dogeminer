@@ -110,7 +110,7 @@ body {
 }
 
 .doge-miner {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogeminer.png");
+  background-image: url("../img/dogeminer.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -136,7 +136,7 @@ body {
 }
 
 .doge-escavator {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogeescavator.png");
+  background-image: url("../img/dogeescavator.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -161,7 +161,7 @@ body {
 }
 
 .doge-factory {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogefactory.png");
+  background-image: url("../img/dogefactory.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -185,7 +185,7 @@ body {
 }
 
 .doge-scientist {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogescientist.png");
+  background-image: url("../img/dogescientist.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -265,19 +265,19 @@ body {
   flex-wrap: wrap;
 }
 
-.miner {
+.dogeminer {
   animation: mine 0.4s linear infinite;
 }
 
-.escavator {
+.dogeescavator {
   animation: dig 30s linear infinite;
 }
 
-.factory {
+.dogefactory {
   animation: factory 0.1s linear infinite;
 }
 
-.scientist {
+.dogescientist {
   animation: science 2s linear infinite;
 }
 
@@ -330,7 +330,7 @@ body {
 }
 
 .upgrade1 {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/upgrade1.png");
+  background-image: url("../img/upgrade1.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -355,7 +355,7 @@ body {
 }
 
 .upgrade2 {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/upgrade2.png");
+  background-image: url("../img/upgrade2.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -370,7 +370,7 @@ body {
 }
 
 .upgrade3 {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/upgrade3.png");
+  background-image: url("../img/upgrade3.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -385,7 +385,7 @@ body {
 }
 
 .upgrade4 {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/upgrade4.png");
+  background-image: url("../img/upgrade4.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -400,7 +400,7 @@ body {
 }
 
 .upgrade5 {
-  background-image: url("http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/upgrade5.png");
+  background-image: url("../img/upgrade5.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */

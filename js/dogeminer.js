@@ -1,15 +1,16 @@
 var preLoad = {
   minebutton: null,
   balance: null,
-  dogecoin: 0,
-  dogecoinfall: null,
   header: null,
+  workers: null,
   items: ["dogeminer", "dogeescavator", "dogefactory", "dogescientist"],
-  multipliers: [1, 1, 1, 1, 1],
+  upgrades: ["upgrade1", "upgrade2", "upgrade3", "upgrade4", "upgrade5"],
   itemprices: [30, 200, 1000, 10000],
   itemquantity: [0, 0, 0, 0],
-  upgrades: ["upgrade1", "upgrade2", "upgrade3", "upgrade4", "upgrade5"],
   upgradeprices: [2000, 5000, 10000, 20000, 50000],
+  multipliers: [1, 1, 1, 1, 1],
+  pricechange: [4, 50, 200, 5000],
+  dogecoin: 33333333,
   dogepersecond: 0,
   totalspent: 0,
   newsarr: [
@@ -26,7 +27,6 @@ var preLoad = {
     "Amazon now accepts Dogecoin as one of its official payment options.",
     "Dogecoin hits 1 billion market cap.",
   ],
-  workers: null,
 
   begin: function () {
     // GET ELEMENTS
@@ -62,10 +62,7 @@ function mine() {
 
   // DISPLAY FALLING DOGE COINS
   const dogefallimg = document.createElement("img");
-  dogefallimg.setAttribute(
-    "src",
-    "http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogecoin.png"
-  );
+  dogefallimg.setAttribute("src", "./img/dogecoin.png");
   dogefallimg.classList.add("dogecoinfall");
   dogefall.appendChild(dogefallimg);
 
@@ -91,178 +88,46 @@ function printNews() {
 }
 
 function handleBuy() {
-  // HANDLE PURCHASES
-  switch (this.id) {
-    // DOGE MINER
-    case "dogeminer":
-      if (preLoad.dogecoin >= preLoad.itemprices[0]) {
-        preLoad.itemquantity[0] += 1;
+  // GET  WORKER AND UPGRADE ARRAYS
+  const workerName = preLoad.items;
+  const upgradeType = preLoad.upgrades;
 
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.itemprices[0];
-        preLoad.totalspent += preLoad.itemprices[0];
-        preLoad.itemprices[0] += preLoad.itemquantity[0] * 4;
+  // GET UPGRADE ELEMENTS
+  const upgradeImg = document.getElementById(this.id);
+  const upgradePrice = document.getElementById(`${this.id}price`);
 
-        const miner = document.createElement("img");
-        miner.setAttribute(
-          "src",
-          "http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogeminer.png"
-        );
-        miner.style.width = "60px";
-        miner.style.height = "auto";
-        miner.style.padding = "0";
-        miner.classList.add("miner");
+  // HANDLES MARKETPLACE PURCHASES
+  if (preLoad.dogecoin >= preLoad.itemprices[workerName.indexOf(this.id)]) {
+    preLoad.itemquantity[workerName.indexOf(this.id)] += 1;
+    preLoad.dogecoin =
+      preLoad.dogecoin - preLoad.itemprices[workerName.indexOf(this.id)];
+    preLoad.totalspent += preLoad.itemprices[workerName.indexOf(this.id)];
+    preLoad.itemprices[workerName.indexOf(this.id)] +=
+      preLoad.itemquantity[workerName.indexOf(this.id)] *
+      preLoad.pricechange[workerName.indexOf(this.id)];
 
-        preLoad.workers.appendChild(miner);
-      } else {
-      }
-      break;
+    const worker = document.createElement("img");
+    worker.setAttribute("src", `./img/${this.id}.png`);
+    worker.style.width = "60px";
+    worker.style.height = "auto";
+    worker.style.padding = "0";
+    worker.classList.add(workerName[workerName.indexOf(this.id)]);
 
-    // DOGE ESCAVATOR
-    case "dogeescavator":
-      if (preLoad.dogecoin >= preLoad.itemprices[1]) {
-        preLoad.itemquantity[1] += 1;
-
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.itemprices[1];
-        preLoad.totalspent += preLoad.itemprices[1];
-        preLoad.itemprices[1] += preLoad.itemquantity[1] * 50;
-
-        const escavator = document.createElement("img");
-        escavator.setAttribute(
-          "src",
-          "http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogeescavator.png"
-        );
-        escavator.style.width = "60px";
-        escavator.style.height = "auto";
-        escavator.style.padding = "0";
-        escavator.classList.add("escavator");
-
-        preLoad.workers.appendChild(escavator);
-      } else {
-      }
-      break;
-
-    // DOGE FACTORY
-    case "dogefactory":
-      if (preLoad.dogecoin >= preLoad.itemprices[2]) {
-        preLoad.itemquantity[2] += 1;
-
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.itemprices[2];
-        preLoad.totalspent += preLoad.itemprices[2];
-        preLoad.itemprices[2] += preLoad.itemquantity[2] * 200;
-
-        const factory = document.createElement("img");
-        factory.setAttribute(
-          "src",
-          "http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogefactory.png"
-        );
-        factory.style.width = "90px";
-        factory.style.height = "auto";
-        factory.style.padding = "0";
-        factory.classList.add("factory");
-
-        preLoad.workers.appendChild(factory);
-      } else {
-      }
-      break;
-
-    // DOGE SCIENTIST
-    case "dogescientist":
-      if (preLoad.dogecoin >= preLoad.itemprices[3]) {
-        preLoad.itemquantity[3] += 1;
-
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.itemprices[3];
-        preLoad.totalspent += preLoad.itemprices[3];
-        preLoad.itemprices[3] += preLoad.itemquantity[3] * 5000;
-
-        const scientist = document.createElement("img");
-        scientist.setAttribute(
-          "src",
-          "http://127.0.0.1/myfirst/PROGRAMAVIMAS/dogeminer/img/dogescientist.png"
-        );
-        scientist.style.width = "90px";
-        scientist.style.height = "auto";
-        scientist.style.padding = "0";
-        scientist.classList.add("scientist");
-
-        preLoad.workers.appendChild(scientist);
-      } else {
-      }
-      break;
-
-    // UPGRADE 1
-    case "upgrade1":
-      if (preLoad.dogecoin >= preLoad.upgradeprices[0]) {
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.upgradeprices[0];
-        preLoad.totalspent += preLoad.upgradeprices[0];
-
-        preLoad.multipliers[0] = 2;
-
-        upgrade1price.style.display = "none";
-        upgrade1.style.display = "none";
-      } else {
-      }
-      break;
-
-    // UPGRADE 2
-    case "upgrade2":
-      if (preLoad.dogecoin >= preLoad.upgradeprices[1]) {
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.upgradeprices[1];
-        preLoad.totalspent += preLoad.upgradeprices[1];
-
-        preLoad.multipliers[1] = 2;
-
-        upgrade2price.style.display = "none";
-        upgrade2.style.display = "none";
-      } else {
-      }
-      break;
-
-    // UPGRADE 3
-    case "upgrade3":
-      if (preLoad.dogecoin >= preLoad.upgradeprices[2]) {
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.upgradeprices[2];
-        preLoad.totalspent += preLoad.upgradeprices[2];
-
-        preLoad.multipliers[2] = 2;
-
-        upgrade3price.style.display = "none";
-        upgrade3.style.display = "none";
-      } else {
-      }
-      break;
-
-    // UPGRADE 4
-    case "upgrade4":
-      if (preLoad.dogecoin >= preLoad.upgradeprices[3]) {
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.upgradeprices[3];
-        preLoad.totalspent += preLoad.upgradeprices[3];
-
-        preLoad.multipliers[3] = 2;
-
-        upgrade4price.style.display = "none";
-        upgrade4.style.display = "none";
-      } else {
-      }
-      break;
-
-    // UPGRADE 5
-    case "upgrade5":
-      if (preLoad.dogecoin >= preLoad.upgradeprices[4]) {
-        preLoad.dogecoin = preLoad.dogecoin - preLoad.upgradeprices[4];
-        preLoad.totalspent += preLoad.upgradeprices[4];
-
-        preLoad.multipliers[4] = 2;
-
-        upgrade5price.style.display = "none";
-        upgrade5.style.display = "none";
-      } else {
-      }
-      break;
+    preLoad.workers.appendChild(worker);
   }
 
-  handleDisplay();
-}
+  // HANDLES UPGRADE PURCHASES
+  if (preLoad.dogecoin >= preLoad.upgradeprices[upgradeType.indexOf(this.id)]) {
+    preLoad.dogecoin =
+      preLoad.dogecoin - preLoad.upgradeprices[upgradeType.indexOf(this.id)];
+    preLoad.totalspent += preLoad.upgradeprices[upgradeType.indexOf(this.id)];
 
+    preLoad.multipliers[upgradeType.indexOf(this.id)] = 2;
+    upgradeImg.style.display = "none";
+    upgradePrice.style.display = "none";
+    handleDisplay();
+  }
+}
 function doMining() {
   // HANDLE WORKER MINING
   setTimeout(function () {
