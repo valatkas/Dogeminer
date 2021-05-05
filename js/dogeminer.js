@@ -68,7 +68,7 @@ function mine() {
 
   setTimeout(function () {
     dogefallimg.remove();
-  }, 8000);
+  }, 6000);
 }
 
 function printNews() {
